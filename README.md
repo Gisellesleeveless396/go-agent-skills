@@ -1,6 +1,12 @@
 # go-agent-skills
 
-Curated AI agent skills for Go projects. Works with **Claude Code**, **Cursor**, **Codex**, **GitHub Copilot**, **Windsurf**, and any agent supporting the [Agent Skills format](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills).
+Curated AI agent skills for Go projects. Install with one command, works everywhere.
+
+```bash
+npx skills add eduardo-sl/go-agent-skills
+```
+
+Supports **Claude Code**, **Cursor**, **Codex**, **GitHub Copilot**, **Windsurf**, **OpenCode**, and [37+ more agents](https://github.com/vercel-labs/skills#available-agents). Compatible with the open [Agent Skills](https://agentskills.io/) ecosystem and [`npx skills`](https://skills.sh) CLI.
 
 Built on the [Uber Go Style Guide](https://github.com/uber-go/guide), [Effective Go](https://go.dev/doc/effective_go), and hard-won production experience with large-scale Go services.
 
@@ -56,58 +62,71 @@ Skills load automatically based on context. You can also invoke them directly vi
 
 ## Quick Start
 
-### Install all skills
+### Install via npx (recommended)
 
 ```bash
-# Clone
-git clone https://github.com/eduardo-sl/go-agent-skills.git
+# Install all skills (interactive — picks your agents)
+npx skills add YOUR_USER/go-agent-skills
 
-# Run install script (interactive — picks your agent)
+# List available skills before installing
+npx skills add YOUR_USER/go-agent-skills --list
+
+# Install specific skills
+npx skills add YOUR_USER/go-agent-skills --skill go-code-review --skill go-concurrency-review
+
+# Install to specific agents
+npx skills add YOUR_USER/go-agent-skills -a claude-code -a cursor
+
+# Install globally (all projects)
+npx skills add YOUR_USER/go-agent-skills -g
+
+# Non-interactive (CI/CD friendly)
+npx skills add YOUR_USER/go-agent-skills --all -y
+```
+
+See [`npx skills` docs](https://github.com/vercel-labs/skills) for all options.
+
+### Install via script
+
+```bash
+git clone https://github.com/YOUR_USER/go-agent-skills.git
 ./go-agent-skills/scripts/install.sh /path/to/your-go-project
 ```
 
-### Manual install per agent
+### Manual install
 
-**Claude Code:**
 ```bash
+# Claude Code
 mkdir -p .claude/skills
 cp -r go-agent-skills/skills/*/* .claude/skills/
-```
 
-**Cursor:**
-```bash
+# Cursor
 mkdir -p .cursor/skills
 cp -r go-agent-skills/skills/*/* .cursor/skills/
-```
 
-**GitHub Copilot:**
-```bash
+# GitHub Copilot
 mkdir -p .github/skills
 cp -r go-agent-skills/skills/*/* .github/skills/
-```
 
-**Codex (OpenAI):**
-```bash
+# Codex (OpenAI)
 mkdir -p .agents/skills
 cp -r go-agent-skills/skills/*/* .agents/skills/
 ```
 
-**Global install (all projects):**
-```bash
-# Claude Code
-cp -r go-agent-skills/skills/*/* ~/.claude/skills/
-
-# Cursor
-cp -r go-agent-skills/skills/*/* ~/.cursor/skills/
-```
-
-### Symlink instead of copy (stays in sync with upstream)
+### Manage installed skills
 
 ```bash
-# Example for Claude Code — project-local
-for skill in go-agent-skills/skills/*/*/; do
-    ln -sf "$(realpath "$skill")" ".claude/skills/$(basename "$skill")"
-done
+# Check for updates
+npx skills check
+
+# Update all skills
+npx skills update
+
+# List installed skills
+npx skills list
+
+# Remove a skill
+npx skills remove go-performance-review
 ```
 
 ## Repository Structure
@@ -115,29 +134,29 @@ done
 ```
 go-agent-skills/
 ├── skills/                            # All skill definitions
-│   ├── (code-quality)/                # Category: coding standards & review
-│   │   ├── _category.json
-│   │   ├── go-coding-standards/
-│   │   │   └── SKILL.md
-│   │   ├── go-code-review/
-│   │   │   └── SKILL.md
-│   │   └── go-error-handling/
-│   │       └── SKILL.md
-│   ├── (architecture)/                # Category: design & structure
-│   │   └── ...
-│   ├── (safety)/                      # Category: concurrency, security, perf
-│   │   └── ...
-│   ├── (testing)/                     # Category: test patterns & coverage
-│   │   └── ...
-│   └── (workflow)/                    # Category: git, deps, automation
-│       └── ...
+│   ├── (code-quality)/                # go-coding-standards, go-code-review, go-error-handling
+│   ├── (architecture)/                # go-architecture-review, go-interface-design, go-api-design
+│   ├── (safety)/                      # go-concurrency-review, go-security-audit, go-performance-review
+│   ├── (testing)/                     # go-test-quality, go-test-table-driven
+│   └── (workflow)/                    # go-dependency-audit, git-commit
+│
+├── # Platform discovery files (how each agent finds skills in this repo)
+├── AGENTS.md                          # Universal: Codex, Gemini CLI, Copilot, Factory
+├── CLAUDE.md                          # Claude Code
+├── .claude-plugin/marketplace.json    # Claude Code plugin marketplace
+├── .cursor/rules/go-skills.mdc       # Cursor
+├── .windsurf/rules/go-skills.md      # Windsurf
+├── .clinerules                        # Cline / Roo Code
+├── .github/copilot-instructions.md   # GitHub Copilot
+├── .opencode/config.json             # OpenCode
+│
 ├── scripts/
-│   ├── install.sh                     # Install skills to any agent
+│   ├── install.sh                     # Shell-based installer (alternative to npx)
 │   └── validate.sh                    # CI: validate SKILL.md format
 ├── docs/
-│   ├── CONTRIBUTING.md                # How to contribute new skills
-│   └── SKILL_GUIDELINES.md           # Quality standards for skills
-├── AGENTS.md                          # Instructions for agents working on THIS repo
+│   ├── CONTRIBUTING.md
+│   └── SKILL_GUIDELINES.md
+├── .github/workflows/validate.yml     # CI pipeline
 ├── README.md
 └── LICENSE
 ```
@@ -161,7 +180,7 @@ These skills encode opinionated defaults. To adapt for your team:
 1. Fork the repo
 2. Edit the SKILL.md files to match your conventions
 3. Add project-specific patterns to the code examples
-4. Install from your fork
+4. Install from your fork: `npx skills add your-org/go-agent-skills`
 
 Common customizations: linter config (golangci-lint rules), import ordering (with internal packages), preferred libraries (zap vs slog, chi vs stdlib), test frameworks (testify vs stdlib).
 
@@ -174,6 +193,7 @@ These skills stand on the shoulders of:
 - [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments) — community review standards
 - [Tech Leads Club Agent Skills](https://github.com/tech-leads-club/agent-skills) — quality standards and format conventions
 - [Anthropic Skills](https://github.com/anthropics/skills) — patterns for production-grade skills
+- [Vercel Skills CLI](https://github.com/vercel-labs/skills) — the `npx skills` distribution ecosystem
 
 ## Contributing
 
