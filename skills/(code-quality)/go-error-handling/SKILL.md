@@ -2,7 +2,7 @@
 name: go-error-handling
 description: >
   Go error handling patterns, wrapping, sentinel errors, custom error types,
-  and the errors package. Based on Uber Go Style Guide and Go standard practices.
+  and the errors package. Grounded in Effective Go, Go Code Review Comments, and production-proven idioms.
   Use when implementing error handling, designing error types, debugging error chains,
   or reviewing error handling patterns.
   Trigger examples: "handle errors", "error wrapping", "custom error type",

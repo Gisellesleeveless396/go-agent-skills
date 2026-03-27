@@ -1,7 +1,7 @@
 # Go Agent Skills
 
-This repository contains 13 curated AI agent skills for Go development,
-based on the Uber Go Style Guide and production-grade Go practices.
+This repository contains curated AI agent skills for Go development, 
+grounded in Effective Go, Go Code Review Comments, and real-world patterns from large-scale Go services.
 
 ## Available Skills
 

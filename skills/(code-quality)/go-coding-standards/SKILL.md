@@ -1,7 +1,8 @@
 ---
 name: go-coding-standards
 description: >
-  Go coding standards and style conventions based on the Uber Go Style Guide.
+  Go coding standards and style conventions grounded in Effective Go,
+  Go Code Review Comments, and production-proven idioms.
   Use when writing or reviewing Go code, enforcing naming conventions, import ordering,
   variable declarations, struct initialization, or formatting rules.
   Trigger examples: "check Go style", "fix formatting", "review naming", "Go conventions".
@@ -11,7 +12,7 @@ description: >
 
 # Go Coding Standards
 
-Idiomatic Go conventions based on the Uber Go Style Guide and Effective Go.
+Idiomatic Go conventions grounded in Effective Go, Go Code Review Comments, and production-proven idioms.
 All code MUST pass `goimports`, `golint`, and `go vet` without errors.
 
 ## 1. Import Ordering
