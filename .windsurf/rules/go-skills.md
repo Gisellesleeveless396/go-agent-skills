@@ -6,7 +6,7 @@ grounded in Effective Go, Go Code Review Comments, and real-world patterns from 
 ## Installation
 
 ```bash
-npx skills add YOUR_USER/go-agent-skills -a windsurf
+npx skills add eduardo-sl/go-agent-skills -a windsurf
 ```
 
 Or manually: copy `skills/*/*/` into `.windsurf/skills/`.

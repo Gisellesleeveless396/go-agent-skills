@@ -62,6 +62,36 @@ docs(readme): add installation instructions for Windsurf
 chore(ci): add SKILL.md line count validation
 ```
 
+## Distribution
+
+This repo is distributed via the [`npx skills`](https://github.com/vercel-labs/skills)
+CLI. Users install with:
+
+```bash
+npx skills add eduardo-sl/go-agent-skills
+```
+
+The CLI discovers skills by recursively searching `skills/` for SKILL.md files.
+
+### Platform discovery files
+
+Each agent has its own discovery mechanism. When adding or removing a skill,
+update ALL of these:
+
+| File | Platform | Purpose |
+|---|---|---|
+| `AGENTS.md` | Universal (Codex, Gemini CLI, Factory) | Agent instructions for this repo |
+| `CLAUDE.md` | Claude Code | Session context with skill list |
+| `.claude-plugin/marketplace.json` | Claude Code marketplace | Plugin manifest with skill paths |
+| `.cursor/rules/go-skills.mdc` | Cursor | Project rules with skill discovery |
+| `.windsurf/rules/go-skills.md` | Windsurf | Cascade rules |
+| `.clinerules` | Cline / Roo Code | Project rules |
+| `.github/copilot-instructions.md` | GitHub Copilot | Custom instructions |
+| `.opencode/config.json` | OpenCode | Config manifest |
+
+The skill list in all files MUST match. If a file lists a skill that doesn't
+exist (or omits one that does), users on that platform get confused.
+
 ## Important constraints
 
 - Skills must be **agent-agnostic**. No Claude-specific, Cursor-specific, or

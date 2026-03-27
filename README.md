@@ -60,7 +60,7 @@ Skills load automatically based on context. You can also invoke them directly vi
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_USER/go-agent-skills.git
+git clone https://github.com/eduardo-sl/go-agent-skills.git
 
 # Run install script (interactive — picks your agent)
 ./go-agent-skills/scripts/install.sh /path/to/your-go-project
