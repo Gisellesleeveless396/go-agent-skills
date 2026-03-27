@@ -66,22 +66,22 @@ Skills load automatically based on context. You can also invoke them directly vi
 
 ```bash
 # Install all skills (interactive — picks your agents)
-npx skills add YOUR_USER/go-agent-skills
+npx skills add eduardo-sl/go-agent-skills
 
 # List available skills before installing
-npx skills add YOUR_USER/go-agent-skills --list
+npx skills add eduardo-sl/go-agent-skills --list
 
 # Install specific skills
-npx skills add YOUR_USER/go-agent-skills --skill go-code-review --skill go-concurrency-review
+npx skills add eduardo-sl/go-agent-skills --skill go-code-review --skill go-concurrency-review
 
 # Install to specific agents
-npx skills add YOUR_USER/go-agent-skills -a claude-code -a cursor
+npx skills add eduardo-sl/go-agent-skills -a claude-code -a cursor
 
 # Install globally (all projects)
-npx skills add YOUR_USER/go-agent-skills -g
+npx skills add eduardo-sl/go-agent-skills -g
 
 # Non-interactive (CI/CD friendly)
-npx skills add YOUR_USER/go-agent-skills --all -y
+npx skills add eduardo-sl/go-agent-skills --all -y
 ```
 
 See [`npx skills` docs](https://github.com/vercel-labs/skills) for all options.
@@ -89,7 +89,7 @@ See [`npx skills` docs](https://github.com/vercel-labs/skills) for all options.
 ### Install via script
 
 ```bash
-git clone https://github.com/YOUR_USER/go-agent-skills.git
+git clone https://github.com/eduardo-sl//go-agent-skills.git
 ./go-agent-skills/scripts/install.sh /path/to/your-go-project
 ```
 
