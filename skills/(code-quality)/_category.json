@@ -1,0 +1,5 @@
+{
+  "name": "Code Quality",
+  "description": "Coding standards, code review, error handling patterns, and idiomatic Go conventions based on the Uber Go Style Guide.",
+  "icon": "✅"
+}
