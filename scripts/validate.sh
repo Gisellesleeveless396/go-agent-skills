@@ -1,0 +1,151 @@
+#!/bin/bash
+set -euo pipefail
+
+# Validate all SKILL.md files in the repository
+# Checks: frontmatter, line count, naming, description quality
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+SKILLS_DIR="$REPO_DIR/skills"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+ERRORS=0
+WARNINGS=0
+CHECKED=0
+
+error() {
+    echo -e "  ${RED}✗ ERROR:${NC} $1"
+    ERRORS=$((ERRORS + 1))
+}
+
+warn() {
+    echo -e "  ${YELLOW}⚠ WARN:${NC} $1"
+    WARNINGS=$((WARNINGS + 1))
+}
+
+ok() {
+    echo -e "  ${GREEN}✓${NC} $1"
+}
+
+echo "Validating SKILL.md files..."
+echo ""
+
+for skill_file in $(find "$SKILLS_DIR" -name "SKILL.md" | sort); do
+    skill_dir=$(dirname "$skill_file")
+    skill_name=$(basename "$skill_dir")
+    rel_path="${skill_file#$REPO_DIR/}"
+
+    echo "[$skill_name] $rel_path"
+    CHECKED=$((CHECKED + 1))
+
+    # 1. Check frontmatter exists
+    if ! head -1 "$skill_file" | grep -q "^---$"; then
+        error "Missing YAML frontmatter (must start with ---)"
+        continue
+    fi
+
+    # Extract frontmatter
+    frontmatter=$(sed -n '/^---$/,/^---$/p' "$skill_file")
+
+    # 2. Check name field exists and matches directory
+    fm_name=$(echo "$frontmatter" | grep "^name:" | head -1 | sed 's/^name:[[:space:]]*//')
+    if [[ -z "$fm_name" ]]; then
+        error "Missing 'name' field in frontmatter"
+    elif [[ "$fm_name" != "$skill_name" ]]; then
+        error "Name mismatch: frontmatter='$fm_name' directory='$skill_name'"
+    else
+        ok "Name matches directory"
+    fi
+
+    # 3. Check description field exists
+    if ! echo "$frontmatter" | grep -q "description:"; then
+        error "Missing 'description' field in frontmatter"
+    else
+        # Check description has trigger phrases
+        desc=$(sed -n '/^description:/,/^---$/p' "$skill_file" | head -20)
+        if echo "$desc" | grep -qi "trigger\|use when\|trigger examples"; then
+            ok "Description has trigger phrases"
+        else
+            warn "Description should include trigger examples"
+        fi
+
+        # Check description has negative triggers
+        if echo "$desc" | grep -qi "do not use\|don't use\|not for"; then
+            ok "Description has negative triggers"
+        else
+            warn "Description should include 'Do NOT use for' guidance"
+        fi
+    fi
+
+    # 4. Check line count
+    line_count=$(wc -l < "$skill_file")
+    if [[ $line_count -gt 500 ]]; then
+        error "SKILL.md is $line_count lines (max 500). Move content to references/"
+    elif [[ $line_count -gt 400 ]]; then
+        warn "SKILL.md is $line_count lines (approaching 500 limit)"
+    else
+        ok "Line count: $line_count (under 500)"
+    fi
+
+    # 5. Check for trailing whitespace
+    if grep -qn '[[:space:]]$' "$skill_file" 2>/dev/null; then
+        warn "Trailing whitespace detected"
+    fi
+
+    # 6. Check name format (lowercase, hyphens only)
+    if ! echo "$skill_name" | grep -qE "^[a-z][a-z0-9-]*$"; then
+        error "Skill name must be lowercase with hyphens only: '$skill_name'"
+    fi
+
+    echo ""
+done
+
+# Validate _category.json files
+echo "Validating category metadata..."
+echo ""
+for cat_file in $(find "$SKILLS_DIR" -name "_category.json" | sort); do
+    cat_dir=$(dirname "$cat_file")
+    cat_name=$(basename "$cat_dir")
+    echo "[$cat_name] _category.json"
+
+    # Check valid JSON
+    if python3 -c "import json; json.load(open('$cat_file'))" 2>/dev/null; then
+        ok "Valid JSON"
+    else
+        error "Invalid JSON in $cat_file"
+    fi
+
+    # Check required fields
+    if python3 -c "
+import json, sys
+d = json.load(open('$cat_file'))
+assert 'name' in d, 'missing name'
+assert 'description' in d, 'missing description'
+" 2>/dev/null; then
+        ok "Has name and description"
+    else
+        error "Missing 'name' or 'description' in $cat_file"
+    fi
+
+    echo ""
+done
+
+# Summary
+echo "========================================"
+echo -e "Skills checked: ${CHECKED}"
+echo -e "Errors:         ${RED}${ERRORS}${NC}"
+echo -e "Warnings:       ${YELLOW}${WARNINGS}${NC}"
+echo "========================================"
+
+if [[ $ERRORS -gt 0 ]]; then
+    echo ""
+    echo -e "${RED}Validation failed with $ERRORS error(s).${NC}"
+    exit 1
+fi
+
+echo ""
+echo -e "${GREEN}All validations passed.${NC}"
